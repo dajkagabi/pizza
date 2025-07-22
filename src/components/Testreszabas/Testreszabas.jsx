@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const CustomizationModal = ({ pizza, onClose }) => {
+const Testreszabas = ({ pizza, onClose }) => {
   const [quantity, setQuantity] = useState(1);
   const [selectedExtras, setSelectedExtras] = useState({});
   const [totalPrice, setTotalPrice] = useState(pizza.price);
@@ -8,7 +8,7 @@ const CustomizationModal = ({ pizza, onClose }) => {
   useEffect(() => {
     let currentPrice = pizza.price;
     for (const extraKey in selectedExtras) {
-      if (selectedExtras[extraKey]) {
+      if (selectedExtras[extraKey] && pizza.customizable[extraKey]) { // Ellenőrizzük, hogy létezik-e az extra
         currentPrice += pizza.customizable[extraKey].price;
       }
     }
@@ -29,7 +29,7 @@ const CustomizationModal = ({ pizza, onClose }) => {
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
       <div className="bg-white rounded-lg shadow-xl w-full max-w-2xl overflow-hidden relative">
-        {/* Bezárás gomb */}
+ 
         <button
           onClick={onClose}
           className="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-2xl"
@@ -38,7 +38,7 @@ const CustomizationModal = ({ pizza, onClose }) => {
         </button>
 
         <div className="flex flex-col md:flex-row">
-          {/* Pizza kép */}
+      
           <div className="w-full md:w-1/2 p-4 flex items-center justify-center bg-gray-50">
             <img src={pizza.image} alt={pizza.name} className="max-h-64 object-contain rounded-lg" />
           </div>
@@ -52,22 +52,26 @@ const CustomizationModal = ({ pizza, onClose }) => {
               {/* Extra hozzávalók */}
               <div className="mb-6">
                 <h4 className="text-lg font-semibold mb-3">Extra hozzávalók:</h4>
-                {Object.entries(pizza.customizable).map(([key, value]) => (
-                  <label key={key} className="flex items-center justify-between cursor-pointer mb-3">
-                    <span className="text-gray-800 capitalize">
-                      {key.replace(/([A-Z])/g, ' $1').trim()}
-                    </span>
-                    <div className="flex items-center">
-                      <span className="text-gray-600 mr-3">+{value.price} Ft</span>
-                      <input
-                        type="checkbox"
-                        className="form-checkbox h-5 w-5 text-red-600 rounded"
-                        checked={!!selectedExtras[key]}
-                        onChange={() => handleExtraChange(key)}
-                      />
-                    </div>
-                  </label>
-                ))}
+                {Object.entries(pizza.customizable).length > 0 ? ( // Ellenőrizzük, hogy vannak-e extrák
+                    Object.entries(pizza.customizable).map(([key, value]) => (
+                    <label key={key} className="flex items-center justify-between cursor-pointer mb-3">
+                        <span className="text-gray-800">
+                        {value.name || key.replace(/([A-Z])/g, ' $1').trim()} 
+                        </span>
+                        <div className="flex items-center">
+                        <span className="text-gray-600 mr-3">+{value.price} Ft</span>
+                        <input
+                            type="checkbox"
+                            className="form-checkbox h-5 w-5 text-red-600 rounded"
+                            checked={!!selectedExtras[key]}
+                            onChange={() => handleExtraChange(key)}
+                        />
+                        </div>
+                    </label>
+                    ))
+                ) : (
+                    <p className="text-gray-600">Nincsenek elérhető extra hozzávalók ehhez a pizzához.</p>
+                )}
               </div>
 
               {/* Mennyiség */}
@@ -111,4 +115,4 @@ const CustomizationModal = ({ pizza, onClose }) => {
   );
 };
 
-export default CustomizationModal;
+export default Testreszabas;

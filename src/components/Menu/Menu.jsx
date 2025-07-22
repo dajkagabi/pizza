@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import PizzaKartya from '../../components/PizzaKartya/PizzaKartya';
 import Testreszabas from '../../components/Testreszabas/Testreszabas';
 
+
 import margheritaImg from "../../assets/margherita.png";
 import pepperoniImg from '../../assets/pepperoni.png';
 import vegetarianaImg from '../../assets/vegetariana.png';
 import quattroStagioniImg from '../../assets/quattro-stagioni.png';
-
 import glutenmentesMargheritaImg from '../../assets/gluten-free-margherita.png';
 import prosciuttoEFunghiImg from '../../assets/prosciutto-funghi.png';
 
@@ -21,12 +21,10 @@ const pizzas = [
     ingredients: ['paradicsom szósz', 'mozzarella', 'bazsalikom'],
     price: 2890,
     rating: 4.6,
-    categories: ['Vegetáriánus'],
-    customizable: {
-      extraMozzarella: { price: 390 },
-      pepperoni: { price: 490 },
-      gomba: { price: 290 },
-      paprika: { price: 290 },
+    categories: ['Klasszikus', 'Vegetáriánus'],
+    customizable: { 
+      extraMozzarella: { name: 'Extra mozzarella', price: 390 },
+     
     }
   },
   {
@@ -39,13 +37,12 @@ const pizzas = [
     ingredients: ['paradicsom szósz', 'mozzarella', 'pepperoni'],
     price: 3490,
     rating: 4.9,
-    categories: [],
-    customizable: {
-        extraMozzarella: { price: 390 },
-        pepperoni: { price: 490 },
-        gomba: { price: 290 },
-        paprika: { price: 290 },
-      }
+    categories: ['Húsos'],
+    customizable: { 
+        extraMozzarella: { name: 'Extra mozzarella', price: 390 },
+        extraPepperoni: { name: 'Extra pepperoni', price: 490 },
+   
+    }
   },
   {
     id: 3,
@@ -54,16 +51,16 @@ const pizzas = [
     image: vegetarianaImg,
     time: '14 perc',
     servings: '1-2 fő',
-    ingredients: ['paradicsom szósz', 'mozzarella', 'paprika'],
+    ingredients: ['paradicsom szósz', 'mozzarella', 'paprika', 'gomba', 'hagyma'],
     price: 3190,
     rating: 4.6,
     categories: ['Vegetáriánus'],
-    customizable: {
-        extraMozzarella: { price: 390 },
-        pepperoni: { price: 490 },
-        gomba: { price: 290 },
-        paprika: { price: 290 },
-      }
+    customizable: { 
+        extraMozzarella: { name: 'Extra mozzarella', price: 390 },
+        extraGomba: { name: 'Extra gomba', price: 290 },
+        extraPaprika: { name: 'Extra paprika', price: 290 },
+        
+    }
   },
   {
     id: 4,
@@ -72,16 +69,15 @@ const pizzas = [
     image: quattroStagioniImg,
     time: '18 perc',
     servings: '1-2 fő',
-    ingredients: ['paradicsom szósz', 'mozzarella', 'sonka'],
+    ingredients: ['paradicsom szósz', 'mozzarella', 'sonka', 'gomba', 'articsóka', 'fekete olívabogyó'],
     price: 3890,
     rating: 4.7,
-    categories: [],
-    customizable: {
-        extraMozzarella: { price: 390 },
-        pepperoni: { price: 490 },
-        gomba: { price: 290 },
-        paprika: { price: 290 },
-      }
+    categories: ['Klasszikus', 'Húsos'],
+    customizable: { 
+        extraMozzarella: { name: 'Extra mozzarella', price: 390 },
+        extraSonka: { name: 'Extra sonka', price: 450 },
+        extraGomba: { name: 'Extra gomba', price: 290 },
+    }
   },
   {
     id: 5,
@@ -93,13 +89,10 @@ const pizzas = [
     ingredients: ['paradicsom szósz', 'mozzarella', 'bazsalikom'],
     price: 3290,
     rating: 4.5,
-    categories: ['Vegetáriánus', 'Gluténmentes'],
-    customizable: {
-        extraMozzarella: { price: 390 },
-        pepperoni: { price: 490 },
-        gomba: { price: 290 },
-        paprika: { price: 290 },
-      }
+    categories: ['Vegetáriánus', 'Gluténmentes', 'Specialty'],
+    customizable: { 
+        extraMozzarella: { name: 'Extra mozzarella', price: 390 },
+    }
   },
   {
     id: 6,
@@ -108,38 +101,56 @@ const pizzas = [
     image: prosciuttoEFunghiImg,
     time: '16 perc',
     servings: '1-2 fő',
-    ingredients: ['paradicsom szósz', 'mozzarella', 'prosciutto'],
+    ingredients: ['paradicsom szósz', 'mozzarella', 'prosciutto', 'gomba'],
     price: 3690,
     rating: 4.8,
-    categories: [],
-    customizable: {
-        extraMozzarella: { price: 390 },
-        pepperoni: { price: 490 },
-        gomba: { price: 290 },
-        paprika: { price: 290 },
-      }
+    categories: ['Húsos'],
+    customizable: { 
+        extraMozzarella: { name: 'Extra mozzarella', price: 390 },
+        extraProsciutto: { name: 'Extra prosciutto', price: 490 },
+        extraGomba: { name: 'Extra gomba', price: 290 },
+    }
   },
+];
+
+const allCategories = [
+    'Minden kategória',
+    'Klasszikus',
+    'Húsos',
+    'Vegetáriánus',
+    'Gluténmentes',
+    'Specialty'
 ];
 
 
 const Menu = () => {
-  const [selectedFilters, setSelectedFilters] = useState([]);
+  const [checkboxFilters, setCheckboxFilters] = useState([]);
+  const [selectedDropdownCategory, setSelectedDropdownCategory] = useState('Minden kategória');
   const [openModal, setOpenModal] = useState(false);
   const [selectedPizza, setSelectedPizza] = useState(null);
 
-  const handleFilterChange = (filter) => {
-    setSelectedFilters((prevFilters) =>
+  const handleCheckboxChange = (filter) => {
+    setCheckboxFilters((prevFilters) =>
       prevFilters.includes(filter)
         ? prevFilters.filter((f) => f !== filter)
         : [...prevFilters, filter]
     );
   };
 
+  const handleDropdownChange = (e) => {
+    setSelectedDropdownCategory(e.target.value);
+  };
+
   const filteredPizzas = pizzas.filter((pizza) => {
-    if (selectedFilters.length === 0 || selectedFilters.includes('Minden kategória')) {
-      return true;
-    }
-    return selectedFilters.every((filter) => pizza.categories.includes(filter));
+    const passesCheckboxFilter = checkboxFilters.every((filter) =>
+      pizza.categories.includes(filter)
+    );
+
+    const passesDropdownFilter =
+      selectedDropdownCategory === 'Minden kategória' ||
+      pizza.categories.includes(selectedDropdownCategory);
+
+    return passesCheckboxFilter && passesDropdownFilter;
   });
 
   const handleOpenModal = (pizza) => {
@@ -164,8 +175,8 @@ const Menu = () => {
           <input
             type="checkbox"
             className="form-checkbox h-5 w-5 text-red-600 rounded"
-            checked={selectedFilters.includes('Vegetáriánus')}
-            onChange={() => handleFilterChange('Vegetáriánus')}
+            checked={checkboxFilters.includes('Vegetáriánus')}
+            onChange={() => handleCheckboxChange('Vegetáriánus')}
           />
           <span className="text-gray-800">Vegetáriánus</span>
         </label>
@@ -173,26 +184,22 @@ const Menu = () => {
           <input
             type="checkbox"
             className="form-checkbox h-5 w-5 text-red-600 rounded"
-            checked={selectedFilters.includes('Gluténmentes')}
-            onChange={() => handleFilterChange('Gluténmentes')}
+            checked={checkboxFilters.includes('Gluténmentes')}
+            onChange={() => handleCheckboxChange('Gluténmentes')}
           />
           <span className="text-gray-800">Gluténmentes</span>
         </label>
         <div className="relative">
           <select
             className="block appearance-none w-full bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
-            value={selectedFilters.includes('Minden kategória') ? 'Minden kategória' : ''}
-            onChange={(e) => {
-                if (e.target.value === 'Minden kategória') {
-                    setSelectedFilters(['Minden kategória']);
-                } else if (selectedFilters.includes('Minden kategória')) {
-                    setSelectedFilters([e.target.value]);
-                } else {
-                    handleFilterChange(e.target.value);
-                }
-            }}
+            value={selectedDropdownCategory}
+            onChange={handleDropdownChange}
           >
-            <option value="Minden kategória">Minden kategória</option>
+            {allCategories.map((category) => (
+                <option key={category} value={category}>
+                    {category}
+                </option>
+            ))}
           </select>
           <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
             <svg

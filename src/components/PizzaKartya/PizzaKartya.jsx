@@ -1,6 +1,6 @@
 import React from 'react';
 
-const PizzaCard = ({ pizza, onCustomize }) => {
+const PizzaKartya = ({ pizza, onCustomize }) => {
   return (
     <div className="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col transform transition-transform duration-300 hover:scale-105">
       <img src={pizza.image} alt={pizza.name} className="w-full h-48 object-cover" />
@@ -83,4 +83,4 @@ const PizzaCard = ({ pizza, onCustomize }) => {
   );
 };
 
-export default PizzaCard;
+export default PizzaKartya;
