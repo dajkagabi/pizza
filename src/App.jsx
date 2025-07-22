@@ -7,6 +7,7 @@ import Akciok from "./components/Akciok/Akciok";
 import Rolunk from "./components/Rolunk/Rolunk";
 import Kapcsolat from "./components/Kapcsolat/Kapcsolat";
 import Helyszinek from "./components/Helyszinek/Helyszinek";
+import Footer from "./components/Footer/Footer";
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path="/rolunk" element={<Rolunk />} />
           <Route path="/kapcsolat" element={<Kapcsolat />} />
           <Route path="/helyszinek" element={<Helyszinek />} />
+          <Route path="/footer" element={<Footer />} />
       </Routes>
     </>
   );

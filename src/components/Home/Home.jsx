@@ -5,6 +5,7 @@ import Akciok from "../Akciok/Akciok";
 import Kapcsolat from "../Kapcsolat/Kapcsolat";
 import Rolunk from "../Rolunk/Rolunk";
 import Helyszinek from "../Helyszinek/Helyszinek";
+import Footer from "../Footer/Footer";
 
 const Home = () => {
   return (
@@ -15,6 +16,7 @@ const Home = () => {
       <Rolunk />
       <Kapcsolat />
       <Helyszinek />
+      <Footer />
     </div>
   );
 };
