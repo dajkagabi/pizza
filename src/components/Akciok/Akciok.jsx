@@ -62,7 +62,7 @@ const Akciok = () => {
                 className="w-full h-48 object-cover object-center"
               />
             ) : (
-              // Helykitöltő, ha nincs kép (az első kártyához)
+              // Helykitöltő, ha nincs kép 
               <div className="w-full h-48 bg-gray-200 flex items-center justify-center">
                 <svg
                   className="w-16 h-16 text-gray-400"
