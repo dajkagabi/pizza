@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
-import Hero from "./components/Hero/Hero";
+import Home from "./components/Home/Home";
 import Menu from "./components/Menu/Menu";
 import Akciok from "./components/Akciok/Akciok";
 import Rolunk from "./components/Rolunk/Rolunk";
@@ -14,8 +14,7 @@ function App() {
     <>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Hero />} />
-    
+          <Route path="/" element={<Home />} />
           <Route path="/menu" element={<Menu />} />
           <Route path="/akciok" element={<Akciok />} />
           <Route path="/rolunk" element={<Rolunk />} />
