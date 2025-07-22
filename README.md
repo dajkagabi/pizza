@@ -1,12 +1,50 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Pizza Mánia
 
-Currently, two official plugins are available:
+Üdvözlünk a **Pizza Mánia** projektben, ahol a pizzarendelés új szintre emelkedik!  
+Ez a webalkalmazás modern technológiákkal készült, hogy gyors, reszponzív és élvezetes felhasználói élményt nyújtson.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+##  Főbb funkciók
 
-## Expanding the ESLint configuration
+-  **Reszponzív dizájn** – 
+-  **Oldal navigáció** – 
+-  **Menükártyák** – 
+-  **Helyszínek** –
+-  **Komponens alapú felépítés** –
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+-  
+
+##  Technológiák
+
+- React.js
+- Tailwind CSS
+- React Router DOM
+- Vite
+- Lucide-react ikon
+
+## Követelmények
+- Node.js
+- Npm
+
+##  Telepítés
+
+1. **Repo klónozása:**
+
+```
+git clone https://github.com/dajkagabi/pizza.git
+cd pizza
+```
+```
+npm install
+cd pizza
+npm run dev
+```
+
+<img width="1920" height="1080" alt="Kezdolap" src="https://github.com/user-attachments/assets/90051074-f04a-46fc-a39e-90c1345f0d97" />
+<img width="1920" height="1014" alt="Menu" src="https://github.com/user-attachments/assets/65af398f-c48a-40c6-811c-d2bc1e74c91b" />
+<img width="1490" height="571" alt="Akciok" src="https://github.com/user-attachments/assets/429007b2-7c0d-4f29-a3ee-a11502d63ea3" />
+<img width="1690" height="700" alt="Rolunk" src="https://github.com/user-attachments/assets/015a5fba-faeb-4778-99de-96c55aa2abab" />
+<img width="1497" height="464" alt="Kapcsolat" src="https://github.com/user-attachments/assets/02312b44-8936-48de-a7a8-597b80d407e8" />
+<img width="1475" height="664" alt="Kapcsolat, footer" src="https://github.com/user-attachments/assets/b6841e4f-fad4-4eb7-81ec-90794b613a84" />
+
+
