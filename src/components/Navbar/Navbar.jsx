@@ -15,7 +15,7 @@ import {
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const cartCount = 3; // ezt majd később props/context állíthatja
+  const cartCount = 0; 
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);

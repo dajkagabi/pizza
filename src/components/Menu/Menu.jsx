@@ -1,3 +1,4 @@
+// src/components/Menu.jsx
 import React, { useState } from 'react';
 import PizzaKartya from '../../components/PizzaKartya/PizzaKartya';
 import Testreszabas from '../../components/Testreszabas/Testreszabas';
@@ -22,9 +23,9 @@ const pizzas = [
     price: 2890,
     rating: 4.6,
     categories: ['Klasszikus', 'Vegetáriánus'],
-    customizable: { 
+    customizable: {
       extraMozzarella: { name: 'Extra mozzarella', price: 390 },
-     
+
     }
   },
   {
@@ -38,10 +39,10 @@ const pizzas = [
     price: 3490,
     rating: 4.9,
     categories: ['Húsos'],
-    customizable: { 
+    customizable: {
         extraMozzarella: { name: 'Extra mozzarella', price: 390 },
         extraPepperoni: { name: 'Extra pepperoni', price: 490 },
-   
+
     }
   },
   {
@@ -55,11 +56,11 @@ const pizzas = [
     price: 3190,
     rating: 4.6,
     categories: ['Vegetáriánus'],
-    customizable: { 
+    customizable: {
         extraMozzarella: { name: 'Extra mozzarella', price: 390 },
         extraGomba: { name: 'Extra gomba', price: 290 },
         extraPaprika: { name: 'Extra paprika', price: 290 },
-        
+
     }
   },
   {
@@ -73,7 +74,7 @@ const pizzas = [
     price: 3890,
     rating: 4.7,
     categories: ['Klasszikus', 'Húsos'],
-    customizable: { 
+    customizable: {
         extraMozzarella: { name: 'Extra mozzarella', price: 390 },
         extraSonka: { name: 'Extra sonka', price: 450 },
         extraGomba: { name: 'Extra gomba', price: 290 },
@@ -90,7 +91,7 @@ const pizzas = [
     price: 3290,
     rating: 4.5,
     categories: ['Vegetáriánus', 'Gluténmentes', 'Specialty'],
-    customizable: { 
+    customizable: {
         extraMozzarella: { name: 'Extra mozzarella', price: 390 },
     }
   },
@@ -105,7 +106,7 @@ const pizzas = [
     price: 3690,
     rating: 4.8,
     categories: ['Húsos'],
-    customizable: { 
+    customizable: {
         extraMozzarella: { name: 'Extra mozzarella', price: 390 },
         extraProsciutto: { name: 'Extra prosciutto', price: 490 },
         extraGomba: { name: 'Extra gomba', price: 290 },
@@ -169,8 +170,25 @@ const Menu = () => {
       <p className="text-lg text-center text-gray-600 mb-8">Válassz kedvenc pizzáid közül</p>
 
       {/* Szűrők */}
-      <div className="flex flex-wrap justify-center md:justify-start items-center gap-4 mb-8">
-        <span className="text-gray-700 font-semibold">Szűrők:</span>
+      <div className="flex flex-wrap justify-center items-center gap-4 mb-8">
+        <span className="text-gray-700 font-semibold flex items-center">
+         
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6 mr-2 text-gray-700"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01.293.707V19a1 1 0 01-1 1H4a1 1 0 01-1-1v-12.414a1 1 0 01.293-.707L3 4z"
+            />
+          </svg>
+          Szűrők:
+        </span>
         <label className="flex items-center space-x-2 cursor-pointer">
           <input
             type="checkbox"
