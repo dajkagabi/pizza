@@ -48,7 +48,7 @@ const PizzaKartya = ({ pizza, onCustomize }) => {
               onClick={() => onCustomize(pizza)}
               className="bg-gray-200 text-gray-800 px-4 py-2 rounded-full text-sm font-semibold hover:bg-gray-300 transition duration-300"
             >
-              Testreszab
+              Testreszabás
             </button>
             <button className="bg-red-600 text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-red-700 transition duration-300">
               Kosárba
