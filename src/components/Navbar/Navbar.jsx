@@ -22,7 +22,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-white shadow-md sticky top-0 z-50 px-6 py-4">
+    <nav className="bg-white shadow-md sticky top-0 z-50 px-2 py-2">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         {/* Logo */}
         <Link to="/" className="text-2xl font-bold text-red-600 flex items-center gap-2">
@@ -31,7 +31,7 @@ const Navbar = () => {
         </Link>
 
         {/* Asztal */}
-        <div className="hidden md:flex space-x-4 items-center"> {/* Csökkentett space-x a több elem miatt */}
+        <div className="hidden md:flex space-x-4 items-center"> 
           <Link to="/" className="flex items-center px-4 py-3 text-gray-800 hover:bg-red-100 rounded-lg transition-colors duration-200">
             <div className="bg-red-100 text-red-600 rounded-full p-2 mr-3">
               <Home className="w-4 h-4" />
