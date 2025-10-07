@@ -34,7 +34,6 @@ cd pizza
 ```
 ```
 npm install
-cd pizza
 npm run dev
 ```
 
